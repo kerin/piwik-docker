@@ -1,0 +1,19 @@
+data:
+  build: data/
+  volumes:
+    - /data
+    - /var/lib/piwik
+piwik:
+  build: .
+  ports:
+    - "8081:80"
+  links:
+    - data
+  volumes_from:
+    - data
+  # volumes:
+  #   - /var/lib/piwik
+  #   - /data
+  environment:
+    USER: user
+    PASS: pass
